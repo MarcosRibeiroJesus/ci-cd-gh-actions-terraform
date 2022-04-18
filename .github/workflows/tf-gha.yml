@@ -28,11 +28,11 @@ jobs:
       - id: fmt
         run: terraform fmt -check
       - id: init
-        run: terraform init -backend=true -backend-config="config/local/backend.hcl"
+        run: terraform init -backend=true -backend-config="config/dev/backend.hcl"
       - id: validate
         run: terraform validate -no-color
       - id: plandev
-        run: terraform plan -no-color -var-file="config/dev/terraform.tfvars"
+        run: terraform plan -no-color -var-file="config/dev/terraform.tfvars" -lock="false"
 
       - uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
@@ -91,11 +91,11 @@ jobs:
       - id: fmt
         run: terraform fmt -check
       - id: init
-        run: terraform init -backend=true -backend-config="config/local/backend.hcl"
+        run: terraform init -backend=true -backend-config="config/prod/backend.hcl"
       - id: validate
         run: terraform validate -no-color
       - id: plandev
-        run: terraform plan -no-color -var-file="config/prod/terraform.tfvars"
+        run: terraform plan -no-color -var-file="config/prod/terraform.tfvars" -lock="false"
 
       - uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
