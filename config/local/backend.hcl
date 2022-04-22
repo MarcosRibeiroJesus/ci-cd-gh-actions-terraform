@@ -1,0 +1,5 @@
+bucket         = "gh-actions-ci-cd"
+key            = "ci-cd-gh-actions-terraform/local/terraform.tfstate"
+region         = "us-east-1"
+profile        = "default"
+dynamodb_table = "tflock-gh-actions-ci-cd"
